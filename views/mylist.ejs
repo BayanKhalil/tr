@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <%- include('layout/header.ejs')%>
+       <h1>my llist</h1>
+    </header>
+    <main>
+       
+        <% if (count){ %>
+        <% y.forEach(y=>{ %>
+            <div>
+           <p> Title: <%= y.title%></p>
+           <p> Company: <%= y.company%></p>
+           <p> Location: <%= y.location%></p>
+           <a href="<%= y.url%>"><%= y.url%></a>
+           <!-- <p> description: <%= y.description%></p> -->
+   <br>
+   <br>
+           <a href="/details/<%= y.id%>">view details</a>
+        </div>
+  
+   <% }) %>
+       <%}else{%>
+         <h1>my list is empty</h1>
+         <%}%>
+    </main>
+</body>
+</html>

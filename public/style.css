@@ -1,0 +1,22 @@
+main{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+div{
+    border: black solid 1px;
+    margin: 5px;
+}
+h1{
+    width: 100%;
+    text-align: center;
+}
+
+nav{
+    background-color: lightgray;
+    margin: 5px;
+}
+.nav{
+  text-decoration: none;
+  padding-left: 10px;
+}

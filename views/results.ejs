@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <%- include('layout/header.ejs')%>
+        <h1>Results</h1>
+     </header>
+   <main>
+    <% y.forEach(y=>{ %>
+        <div>
+       <p> Title: <%= y.title%></p>
+       <p> Company: <%= y.company%></p>
+       <p> Location: <%= y.location%></p>
+       <a href="<%= y.url%>"><%= y.url%></a>
+       
+       <form action="/mylist" method="POST">
+        
+        <input type="hidden" name="title" value="<%= y.title%>">
+        <input type="hidden" name="company" value="<%= y.company%>">
+        <input type="hidden" name="location" value="<%= y.location%>">
+        <input type="hidden" name="url" value="<%= y.url%>">
+        <input type="hidden" name="description" value="<%= y.description%>">
+
+        <input type="submit" value="add to my list">
+    
+    
+    </form>
+    </div>
+
+<% }) %>
+
+   </main> 
+</body>
+</html>
