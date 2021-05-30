@@ -36,15 +36,37 @@ app.put('/details/:id',updateHandler)
 app.delete('/details/:id',deleteHandler)
 
 
+app.post('/',createHandler)
+app.get('/',create2Handler)
+function createHandler (req,res){
+    console.log(req.body);
+    const {title,company,location,url,description}=req.body;
+    let sql=`INSERT INTO sunday (title,company,location,url,description) VALUES ($1,$2,$3,$4,$5)`
+    let safeValues=[title,company,location,url,description]
+    client.query(sql,safeValues).then(()=>{
+        res.redirect('/')
+    })
 
+}
+
+function create2Handler(req,res){
+    let sql=`SELECT * FROM sunday`
+    client.query(sql).then(x=>{
+        console.log(x.rows);
+        res.render('index',{y:x.rows,cond:1})
+    })
+
+}
 
 function homeHandler (req,res){
    let url='https://jobs.github.com/positions.json?location=usa';
    superagent.get(url).then(x=>{
     //   console.log(x.body);
-      let y=x.body.map(Object=>new Job(Object))
+    //   let y=x.body.map(Object=>new Job(Object))
+
+   
      
-      res.render('index',{y:y})
+      res.render('index',{y:x.body,cond:0})
    })
 }
 function search2Handler(req,res){
@@ -111,12 +133,12 @@ function deleteHandler(req,res){
 
 
 
-function Job(jobInfo){
-    this.title=jobInfo.title
-    this.company=jobInfo.company
-    this.location=jobInfo.location
-    this.url=jobInfo.url
-}
+// function Job(jobInfo){
+//     this.title=jobInfo.title
+//     this.company=jobInfo.company
+//     this.location=jobInfo.location
+//     this.url=jobInfo.url
+// }
 
 
 

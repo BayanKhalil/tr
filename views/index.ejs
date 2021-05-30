@@ -15,17 +15,48 @@
     </header>
     <main>
        
+         <form action="/" method="POST">
 
-        <% y.forEach(y=>{ %>
-            <div>
-           <p> Title: <%= y.title%></p>
-           <p> Company: <%= y.company%></p>
-           <p> Location: <%= y.location%></p>
-           <a href="<%= y.url%>"><%= y.url%></a>
-       
-        </div>
-  
-   <% }) %>
+            <label for="create">create</label>
+            <input type=" text"  name="title" value="title">
+            <input type=" text"  name="company" value="company">
+            <input type=" text"  name="location" value="location">
+            <input type=" text"  name="url" value="url">
+            <input type=" text"  name="description" value="description">
+            
+
+              <button type="submit">CREATE</button>
+         </form>
+
+
+         <% if (cond){ %>
+            <% y.forEach(y=>{ %>
+                <div>
+               <p> Title: <%= y.title%></p>
+               <p> Company: <%= y.company%></p>
+               <p> Location: <%= y.location%></p>
+               <a href="<%= y.url%>"><%= y.url%></a>
+               <p> description: <%= y.description%></p>
+             
+            </div>
+      
+       <% }) %>
+           <%}else{%>
+            
+            <% y.forEach(y=>{ %>
+                <div>
+               <p> Title: <%= y.title%></p>
+               <p> Company: <%= y.company%></p>
+               <p> Location: <%= y.location%></p>
+               <a href="<%= y.url%>"><%= y.url%></a>
+           
+            </div>
+      
+       <% }) %>
+
+             <%}%>
+
+
        
 
     </main>
